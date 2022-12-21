@@ -61,13 +61,16 @@ const FundCard = ({
           </div>
         </div>
         <div className="flex items-center mt-[20px] gap-[12px]">
-          <div>
+          <div className="w-[30px] h-[30px] rounded-full flex justify-center items-center bg-[#13131a]">
             <img
               src={thirdweb}
               alt="user"
               className="w-1/2 h-1/2 object-contain"
             />
           </div>
+          <p className="flex-1 font-epilogue font-normal text-[12px] text-[#808191]">
+            by <span className="text-[#b2b3bd]">{owner}</span>
+          </p>
         </div>
       </div>
     </div>
