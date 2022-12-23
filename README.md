@@ -18,3 +18,7 @@
  Create Campaign
  ![Screenshot 2022-12-23 123242](https://user-images.githubusercontent.com/56751643/209291212-66b1370d-1f7c-4a4f-896b-450951355b19.png)
  
+ # Mobile phone view
+ 
+ ![Screenshot 2022-12-23 123350](https://user-images.githubusercontent.com/56751643/209291537-81725a59-25e6-43d5-a809-92fe43a4893e.png)
+ 
