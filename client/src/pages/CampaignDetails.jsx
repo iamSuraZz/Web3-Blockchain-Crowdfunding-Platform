@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { ethers } from "ethers";
+import { useLocation, useNavigate } from "react-router-dom";
+// import { ethers } from "ethers";
 import { useStateContext } from "../context";
 import { CustomButton, CountBox } from "../components";
 import { calculateBarPercentage, daysLeft } from "../utils";
 import { thirdweb } from "../assets";
+import Loader from "../components/Loader";
 
 const CampaignDetails = () => {
   const { state } = useLocation();
@@ -13,6 +14,8 @@ const CampaignDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState("");
   const [donators, setDonators] = useState([]);
+
+  const navigate = useNavigate();
 
   const remaingingDays = daysLeft(state.deadline);
 
@@ -28,12 +31,13 @@ const CampaignDetails = () => {
   const handleDonate = async () => {
     setIsLoading(true);
     await donate(state.pId, amount);
+    navigate("/");
     setIsLoading(false);
   };
 
   return (
     <div>
-      {isLoading && "Loading..."}
+      {isLoading && <Loader />}
       <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
         <div className="flex-1 flex-col">
           <img
@@ -138,7 +142,7 @@ const CampaignDetails = () => {
                 type="number"
                 placeholder="ETH 0.1"
                 step="0.01"
-                className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] font-epilogue bg-transparent border-[#3a3a43] text-white text-[18px] leading-[30px] placeholder:text[#4b5264] rounded-[10px]"
+                className="w-full py-[10px] sm:px-[20px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-epilogue text-white text-[18px] leading-[30px] placeholder:text-[#4b5264] rounded-[10px]"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
